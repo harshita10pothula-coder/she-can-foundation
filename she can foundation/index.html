@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>She Can Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #fdf2f8;
+      --text: #1e1b4b;
+      --text-light: #6b7280;
+      --accent: #db2777;
+      --accent-dark: #be185d;
+      --card: #ffffff;
+      --border: #f3e8ff;
+      --footer-bg: #1e1b4b;
+      --footer-text: #cbd5e1;
+    }
+
+    body.dark {
+      --bg: #0f0a1a;
+      --bg-alt: #1a1025;
+      --text: #f1e8fd;
+      --text-light: #a78bfa;
+      --accent: #f472b6;
+      --accent-dark: #ec4899;
+      --card: #1a1025;
+      --border: #2e1a47;
+      --footer-bg: #08040f;
+      --footer-text: #8b7b9e;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+    }
+
+    .dark-toggle {
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 2rem;
+      padding: 0.4rem 0.9rem;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: 0.2s;
+    }
+
+    .dark-toggle:hover {
+      border-color: var(--accent);
+      background: var(--bg-alt);
+    }
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      padding: 3rem 0 4rem;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-content .badge {
+      display: inline-block;
+      background: var(--bg-alt);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.9rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+    }
+
+    .hero-content h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h1 span {
+      background: linear-gradient(135deg, var(--accent), #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content p {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin-bottom: 1.75rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(219, 39, 119, 0.25);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image svg {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+    }
+
+    .about {
+      padding: 4rem 0;
+      background: var(--bg-alt);
+      transition: background 0.3s;
+    }
+
+    .about h2 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .about > .container > p {
+      text-align: center;
+      color: var(--text-light);
+      max-width: 650px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(219, 39, 119, 0.08);
+    }
+
+    .card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+
+    footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.9rem;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    footer .heart {
+      color: #f472b6;
+    }
+
+    footer strong {
+      color: #f1e8fd;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 2rem 0 3rem;
+      }
+
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-image svg {
+        max-width: 280px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        padding: 1rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content h1 {
+        font-size: 1.6rem;
+      }
+
+      .container {
+        padding: 0 1.25rem;
+      }
+
+      .about h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">She Can Foundation</div>
+    <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">☾ Theme</button>
+  </nav>
+
+  <section class="hero container">
+    <div class="hero-content reveal">
+      <div class="badge">Empowering since 2025</div>
+      <h1>Empowering Women, <span>Transforming Futures</span></h1>
+      <p>We believe every woman deserves the opportunity to learn, lead, and thrive. Join us in building a world where she can.</p>
+      <a href="#" class="btn" id="actionBtn">Get Involved</a>
+    </div>
+    <div class="hero-image reveal">
+      <svg viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="180" r="130" fill="url(#g1)" opacity="0.15" />
+        <circle cx="200" cy="160" r="80" fill="url(#g2)" opacity="0.2" />
+        <path d="M140 200 Q200 100 260 200 Q200 220 140 200Z" fill="url(#g3)" opacity="0.25" />
+        <path d="M160 220 Q200 140 240 220 Q200 240 160 220Z" fill="url(#g4)" opacity="0.3" />
+        <circle cx="200" cy="145" r="40" fill="url(#g5)" opacity="0.35" />
+        <path d="M175 220 Q185 180 200 175 Q215 180 225 220Z" fill="url(#g6)" opacity="0.5" />
+        <path d="M155 260 L165 235 L200 225 L235 235 L245 260Z" fill="url(#g6)" opacity="0.4" />
+        <circle cx="160" cy="130" r="8" fill="var(--accent)" opacity="0.5" />
+        <circle cx="240" cy="130" r="8" fill="var(--accent)" opacity="0.5" />
+        <circle cx="130" cy="170" r="6" fill="var(--accent)" opacity="0.4" />
+        <circle cx="270" cy="170" r="6" fill="var(--accent)" opacity="0.4" />
+        <circle cx="200" cy="105" r="5" fill="var(--accent)" opacity="0.35" />
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#db2777" /><stop offset="1" stop-color="#a855f7" /></linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#db2777" /><stop offset="1" stop-color="#a855f7" /></linearGradient>
+          <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#db2777" /><stop offset="1" stop-color="#a855f7" /></linearGradient>
+          <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#db2777" /><stop offset="1" stop-color="#a855f7" /></linearGradient>
+          <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#db2777" /><stop offset="1" stop-color="#a855f7" /></linearGradient>
+          <linearGradient id="g6" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#db2777" /><stop offset="1" stop-color="#a855f7" /></linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="reveal">About Us</h2>
+      <p class="reveal">She Can Foundation is a non-profit dedicated to empowering women through education, mentorship, and community-driven programs. We create safe spaces for women to grow, connect, and lead.</p>
+      <div class="cards">
+        <div class="card reveal">
+          <div class="icon">🎓</div>
+          <h3>Education</h3>
+          <p>Scholarships and skill-building workshops for women from all backgrounds.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🤝</div>
+          <h3>Mentorship</h3>
+          <p>One-on-one guidance from industry leaders who believe in your potential.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon">🌊</div>
+          <h3>Community</h3>
+          <p>A supportive network of women lifting each other up, every step of the way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 <strong>She Can Foundation</strong>. Made with <span class="heart">♥</span> for every woman who dares to dream.
+    </div>
+  </footer>
+
+  <script>
+       const toggle = document.getElementById('darkToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const stored = localStorage.getItem('theme');
+
+    if (stored === 'dark' || (!stored && prefersDark)) {
+      document.body.classList.add('dark');
+    }
+
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach((el) => observer.observe(el));
+
+    document.getElementById('actionBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Thank you for your interest! Together, she can.');
+    });
+  </script>
+
+</body>
+</html>
